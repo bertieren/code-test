@@ -18,23 +18,21 @@ public class Solutions {
             return null;
         }
 
-        LinkedList<Character> list = new LinkedList<>();
+        StringBuilder sb = new StringBuilder();
 
         IntStream.range(0, input.length()).forEach(i -> {
 
-            list.add(input.charAt(i));
+            char c = input.charAt(i);
+            int length = sb.length();
 
-            int size = list.size();
-            if (size > 2) {
-                if (list.get(size - 1) == list.get(size - 2) && list.get(size - 2) == list.get(size - 3)) {
-                    list.removeLast();
-                    list.removeLast();
-                    list.removeLast();
-                }
+            if (length > 1 && c == sb.charAt(length - 1) && c == sb.charAt(length - 2)) {
+                sb.delete(length - 2, length);
+            } else {
+                sb.append(c);
             }
         });
 
-        return list.stream().map(Object::toString).collect(Collectors.joining());
+        return sb.toString();
     }
 
 
@@ -49,36 +47,33 @@ public class Solutions {
             return null;
         }
 
-        LinkedList<Character> list = new LinkedList<>();
+        StringBuilder sb = new StringBuilder();
 
         IntStream.range(0, input.length()).forEach(i -> {
 
-            list.add(input.charAt(i));
+            char c = input.charAt(i);
 
-            replaceDuplicateCharacters(list);
+            appendChar(c, sb);
+
         });
 
-        return list.stream().map(Object::toString).collect(Collectors.joining());
+        return sb.toString();
     }
 
-    public void replaceDuplicateCharacters(LinkedList<Character> list) {
+    public void appendChar(char c, StringBuilder sb) {
 
-        int size = list.size();
+        int length = sb.length();
 
-        if (size > 2) {
-            Character duplicatedChar = list.get(size - 2);
+        if (length > 1 && c == sb.charAt(length - 1) && c == sb.charAt(length - 2)) {
 
-            if (list.get(size - 1) == duplicatedChar && duplicatedChar == list.get(size - 3)) {
-                list.removeLast();
-                list.removeLast();
-                list.removeLast();
+            sb.delete(length - 2, length);
 
-                if (duplicatedChar > 'a') {
-                    list.add((char) (duplicatedChar - 1));
-                }
-
-                replaceDuplicateCharacters(list);
+            if (c > 'a') {
+                appendChar((char) (c - 1), sb);
             }
+
+        } else {
+            sb.append(c);
         }
     }
 }
