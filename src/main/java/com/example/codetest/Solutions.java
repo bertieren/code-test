@@ -76,4 +76,24 @@ public class Solutions {
             sb.append(c);
         }
     }
+    
+    
+    
+    /**
+     * RegEx solution
+     */
+    public static void main(String[] args) {
+
+        String str = "aabcccbbad";
+
+        String regex = "([a-z])\\1{2,}";
+
+        Pattern pattern = Pattern.compile(regex);
+
+        while (pattern.matcher(str).find()) {
+            str = pattern.matcher(str).replaceAll("");
+
+            System.out.println(str);
+        }
+    }
 }
