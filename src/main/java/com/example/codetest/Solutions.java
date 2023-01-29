@@ -1,8 +1,7 @@
 package com.example.codetest;
 
-import java.util.LinkedList;
 import java.util.Objects;
-import java.util.stream.Collectors;
+import java.util.regex.Pattern;
 import java.util.stream.IntStream;
 
 public class Solutions {
