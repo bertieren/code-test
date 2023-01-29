@@ -30,6 +30,9 @@ class SolutionsTest {
 
         String character4 = solutions.removeDuplicateCharacters("aa");
         Assertions.assertEquals("aa", character4);
+
+        String character5 = solutions.removeDuplicateCharacters("aaa");
+        Assertions.assertEquals("", character5);
     }
 
     @Test
@@ -64,6 +67,9 @@ class SolutionsTest {
 
         String character5 = solutions.replaceDuplicateCharacters("aa");
         Assertions.assertEquals("aa", character5);
+
+        String character6 = solutions.replaceDuplicateCharacters("bbb");
+        Assertions.assertEquals("a", character6);
     }
 
     @Test
